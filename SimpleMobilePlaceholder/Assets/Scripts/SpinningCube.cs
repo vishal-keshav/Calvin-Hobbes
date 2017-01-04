@@ -14,12 +14,12 @@ public class SpinningCube : MonoBehaviour
 		if (m_RotationDirection == Vector3.up) 
 		{
 			m_RotationDirection = Vector3.down;
-            m_Speed = m_Speed+20;
+            m_Speed = m_Speed+30;
 		}
 		else 
 		{
 			m_RotationDirection = Vector3.up;
-            m_Speed = m_Speed + 20;
+            m_Speed = m_Speed - 10;
         }
 	}
 
