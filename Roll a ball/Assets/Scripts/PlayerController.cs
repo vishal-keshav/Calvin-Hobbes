@@ -12,14 +12,15 @@ public class PlayerController : MonoBehaviour {
     }
     private void FixedUpdate()
     {
-        ///float moveHorizontal = Input.GetAxis("Horizontal");
-        ///float moveVertical = Input.GetAxis("Vertical");
-        ///Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-		Vector3 movement = Vector3.zero;
-		movement.x = -Input.acceleration.y;
-		movement.z = Input.acceleration.x;
-		if (movement.sqrMagnitude > 1)
-            movement.Normalize();
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+		
+        ///Vector3 movement = Vector3.zero;
+		///movement.x = -Input.acceleration.y;
+		///movement.z = Input.acceleration.x;
+		///if (movement.sqrMagnitude > 1)
+            ///movement.Normalize();
         rb.AddForce(movement*playerspeed);
     }
 }
