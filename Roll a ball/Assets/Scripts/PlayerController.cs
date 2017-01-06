@@ -23,4 +23,11 @@ public class PlayerController : MonoBehaviour {
             movement.Normalize();
         rb.AddForce(movement*playerspeed);
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("coin"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
