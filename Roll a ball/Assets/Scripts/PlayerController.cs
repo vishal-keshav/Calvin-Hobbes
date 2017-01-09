@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("coin"))
         {
             other.gameObject.SetActive(false);
-            points += 1;
+            points =points + 1;
         }
         if(points == 10)
         {
