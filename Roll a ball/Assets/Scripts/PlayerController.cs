@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     public float playerspeed;
     private Rigidbody rb;
-
+    private int points;
+    public Text information;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerspeed = 10.0f;
+        points = 0;
+        information.text = "Not Passed";
     }
     private void FixedUpdate()
     {
@@ -28,6 +32,11 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("coin"))
         {
             other.gameObject.SetActive(false);
+            points += 1;
+        }
+        if(points == 10)
+        {
+            information.text = "Passed";
         }
     }
 }
