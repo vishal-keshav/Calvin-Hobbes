@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 
     public Vir_jystick joystick;
 
+    private Transform camera_rot;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour {
         movement.x = joystick.JHorizontal();
         movement.z = joystick.JVertical();
 
+        ///movement = Rotatewithview(movement);
+
         if (movement.sqrMagnitude > 1)
             movement.Normalize();
         rb.AddForce(movement*playerspeed);
@@ -45,6 +49,22 @@ public class PlayerController : MonoBehaviour {
         if(points == 10)
         {
             information.text = "Passed";
+        }
+    }
+
+    ///Camera rotation fintion
+    private Vector3 Rotatewithview(Vector3 move_vector)
+    {
+        if (camera_rot != null)
+        {
+            Vector3 dir = camera_rot.TransformDirection(move_vector);
+            dir.Set(dir.x, 0, dir.z);
+            return dir.normalized * move_vector.magnitude;
+        }
+        else
+        {
+            camera_rot = Camera.main.transform;
+            return move_vector;
         }
     }
 }

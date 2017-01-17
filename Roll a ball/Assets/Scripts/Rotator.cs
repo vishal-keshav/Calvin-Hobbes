@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// THis is for rotating collectors (yellow)
+/// </summary>
 public class Rotator : MonoBehaviour {
 	
 	// Update is called once per frame
