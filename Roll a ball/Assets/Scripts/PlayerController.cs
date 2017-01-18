@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
         if (movement.sqrMagnitude > 1)
             movement.Normalize();
         rb.AddForce(movement*playerspeed);
+        information.text = "Passed" + Input.touchCount;
     }
     void OnTriggerEnter(Collider other)
     {
