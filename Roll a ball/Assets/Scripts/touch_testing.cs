@@ -12,7 +12,7 @@ public class touch_testing : multi_touch
 
     void Update()
     {
-        Check_touches();
+        ///Check_touches();
     }
 
     public override void OnTouchMovedAnywhere()
