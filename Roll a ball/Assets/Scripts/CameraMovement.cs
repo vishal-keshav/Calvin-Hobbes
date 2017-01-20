@@ -10,10 +10,15 @@ public class CameraMovement : MonoBehaviour {
     private float pitch = 0.0f;
     private float yaw = 0.0f;
 
+    private float width;
+    private float height;
+
     void Start()
     {
         //offset = transform.position - player.transform.position;
         distance = Vector3.Distance(transform.position, player.transform.position);
+        width = Screen.width;
+        height = Screen.height;
     }
     void LateUpdate()
     {
@@ -24,14 +29,19 @@ public class CameraMovement : MonoBehaviour {
         }
         else
         {
-
             transform.LookAt(player.transform);
-            pitch = Input.GetTouch(0).deltaPosition.y;
-            yaw = Input.GetTouch(0).deltaPosition.x;
-            //offset = transform.position - player.transform.position;
-            transform.RotateAround(player.transform.position, new Vector3(pitch, yaw, 0), Time.deltaTime * r_speed);
+            for(int i = 0; i < Input.touchCount; i++)
+            {
+                if (Input.GetTouch(i).phase == TouchPhase.Moved && Input.GetTouch(i).position.x < (width / 10)*7)
+                {
+                    pitch = Input.GetTouch(i).deltaPosition.y;
+                    yaw = Mathf.Clamp(Input.GetTouch(i).deltaPosition.x,-10,10);
+                    transform.RotateAround(player.transform.position, new Vector3(pitch, yaw, 0), Time.deltaTime * r_speed);
+                    break;
+                }
+            }
+
             transform.position = (transform.position - player.transform.position).normalized * distance + player.transform.position;
-            //transform.position = player.transform.position + offset;
         }
         
         ///transform.position = player.transform.position + offset;
