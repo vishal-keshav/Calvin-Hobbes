@@ -44,8 +44,8 @@ public class CameraMovement : MonoBehaviour {
                 if (Input.GetTouch(i).phase == TouchPhase.Moved && Input.GetTouch(i).position.x < (width / 10)*7)
                 {
                     Vector3 dir = new Vector3(0, 0, -5);
-                    pitch = pitch + Input.GetTouch(i).deltaPosition.y*1;
-                    yaw = yaw + Input.GetTouch(i).deltaPosition.x*1;
+                    pitch = Mathf.Clamp(pitch - Input.GetTouch(i).deltaPosition.y*(0.1f),5,60);
+                    yaw = yaw + Input.GetTouch(i).deltaPosition.x*(0.5f);
                     //pitch = Input.GetAxis("Horizontal");
                     //yaw = Input.GetAxis("Vertical");
 
