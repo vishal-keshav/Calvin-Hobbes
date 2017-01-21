@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
     public Vir_jystick joystick;
 
-    private Transform camera_rot;
+    public Transform camera_rot;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
         movement.x = joystick.JHorizontal();
         movement.z = joystick.JVertical();
 
-        ///movement = Rotatewithview(movement);
+        movement = Rotatewithview(movement);
 
         if (movement.sqrMagnitude > 1)
             movement.Normalize();

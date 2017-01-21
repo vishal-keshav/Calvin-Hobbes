@@ -20,7 +20,7 @@ public class touch_testing : multi_touch
         pitch += Input.GetTouch(0).deltaPosition.y * rotateSpeed * Time.deltaTime;
         yaw += Input.GetTouch(0).deltaPosition.x * rotateSpeed * Time.deltaTime;
 
-        pitch = Mathf.Clamp(pitch, -60, 60);
-        myplayer.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        //pitch = Mathf.Clamp(pitch, -60, 60);
+        myplayer.transform.eulerAngles = new Vector3(pitch, 0.0f, 0.0f);
     }
 }
